@@ -44,6 +44,7 @@ if choice == 1:
     try:
         countryChoice = int(input("Please choose your country: "))
         print()
+        country = Data[1][1][countryChoice-1][0][0]
         if countryChoice < 1 or countryChoice > num:
             raise Exception("Choice out of Range")
     except:
@@ -52,9 +53,10 @@ if choice == 1:
     for index in range(1, len(Data[1][1][countryChoice - 1])):
         print('%s. %s'%(index, Data[1][1][countryChoice - 1][index][0]))
     try:
-        origin = int(input("Enter choice: "))
+        originIndex = int(input("Enter choice: "))
         print()
-        if origin < 1 or origin > index:
+        origin = Data[1][1][countryChoice - 1][originIndex][0]
+        if originIndex < 1 or originIndex > index:
             raise Exception("Choice out of range")
     except:
         print("You have given invalid input")
@@ -89,7 +91,7 @@ if choice == 1:
                 break
             else:
                 flag = True
-    print("The origin of your journer: %s\nYour destination: %s"%(origin, destination))
+    print("The origin of your journey: %s\nYour destination: %s"%(origin, destination))
     print()
     flightDetails = []
     index = 0
@@ -102,6 +104,12 @@ if choice == 1:
                             index = index + 1
                             Row = [index] + row
                             flightDetails.append(Row)
-    print(tabulate(flightDetails, headers = ['SNo.', 'From', 'To', 'Duration', 'Flight Details', 'Cost']))
+    print(tabulate(flightDetails, headers = ['SNo.', 'From', 'To', 'Timing', 'Duration', 'Flight Details', 'Cost']))
+    try:
+        choice = int(input("Please choose a flight: "))
+        if choice < 1 or choice > index:
+            raise Exception("Choice out of range")
+    except:
+        print("You have given invalid input")
 else:
     print("This section is under development")
