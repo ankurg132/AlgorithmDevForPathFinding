@@ -112,4 +112,5 @@ if choice == 1:
     except:
         print("You have given invalid input")
 else:
-    print("This section is under development")
+    print("This section is under development...")
+    inpu = input("")
